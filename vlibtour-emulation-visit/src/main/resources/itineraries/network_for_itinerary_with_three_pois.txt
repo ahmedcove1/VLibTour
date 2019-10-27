@@ -1,0 +1,64 @@
+The POIs are:
+  - Position04
+  - Position19
+  - Position47
+
+                                                       Position01
+                                                           |
+                                                           *
+Position02---*Position03---*Position04---*Position05---*Position06
+                               |              /            |
+                               *             *             * 
+                            Position07  Position08     Position09
+                               |         |                 |
+                               |         *                 |
+                               |     Position10            |
+                               |    ____/                  |
+                               *   /                       *
+                           Position11                  Position12
+                               |                           |
+                               *                           *
+                           Position13                  Position14
+                               |                           |
+                               *                           *
+                           Position15                  Position16
+                               |                           |
+                               *                           *
+                           Position17                  Position18
+                               |   ________________________/ 
+                               |  /
+                               * *                     
+                           Position19
+                               |  \_______________________
+                               |                          \
+                               |                           *
+                               |                       Position20
+                               |                           |
+                Position21*____|                           *
+                   |                                   Position22
+                   |___*Position23                         |
+                           |                               *
+                           *                           Position24
+            Position25*-Position26                         |
+                |          |                               *
+ Position27*____|          *                           Position28
+     |                  Position29                         |
+     *                     |                               *
+ Position30                *                           Position31
+     |                  Position32                         |
+     *                     |                               *
+ Position33                *                           Position34
+     |                  Position35                         |
+     *                     |                               *
+ Position36                *                           Position37
+     |                  Position38                         |
+     *                     |                               *
+ Position39                *                           Position40
+     |                  Position41                         |
+     *                     |                               *
+ Position42                *              ____________*Position43
+     |                  Position44_______/                 |
+     *                                                     *
+ Position45                                  _________*Position46
+     |_________________*Position47__________/                    
+                        

@@ -1,0 +1,14 @@
+{
+    "number":7102,
+    "name":"07102 - SAINTE CLOTHILDE",
+    "address":"FACE 19 RUE CASIMIR PERIER - 75007 PARIS",
+    "position":{"lat":48.857829110709226,"lng":2.319149052579355},
+    "banking":true,
+    "bonus":false,
+    "status":"OPEN",
+    "contract_name":"Paris",
+    "bike_stands":42,
+    "available_bike_stands":13,
+    "available_bikes":25,
+    "last_update":1505671910000
+}

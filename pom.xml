@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is part of the course CSC5002.
+
+The course material is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+The course material is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with the course CSC5002.  If not, see <http://www.gnu.org/licenses/>.
+
+Initial developer(s): Denis Conan
+Contributor(s):
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>eu.telecomsudparis.vlibtour</groupId>
+  <artifactId>vlibtour</artifactId>
+  <packaging>pom</packaging>
+  <name>root: the VLibTour project</name>
+  <version>1.0-SNAPSHOT</version>
+
+  <!-- repositories for the checkstyle configuration TSP CSC -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>tsp-csc-checkstyle-config-stable</id>
+      <name>TSP CSC Checkstyle configuration, stable</name>
+      <url>http://www-inf.telecom-sudparis.eu/COURS/CSC4102/maven-repository/stable/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>tsp-csc-checkstyle-config-snapshot</id>
+      <name>TSP CSC Checkstyle configuration, snapshot</name>
+      <url>http://www-inf.telecom-sudparis.eu/COURS/CSC4102/maven-repository/snapshot/</url>
+    </pluginRepository>
+    <!-- where to find glassfish plugin for embedded server-->
+    <pluginRepository>
+      <id>maven2-repository.dev.java.net</id>
+      <name>Java.net Repository for Maven</name>
+      <url>http://download.java.net/maven/glassfish/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>josm-public</id>
+      <name>josm public releases</name>
+      <url>https://josm.openstreetmap.de/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <glassfish.version>5.0</glassfish.version>
+    <jersey.version>2.17</jersey.version>
+  </properties>
+
+  <!-- declaration of the versions of all the dependencies of the project -->
+  <!-- change here the version of the dependencies to update all the modules -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- logging in our modules -->
+      <dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.17</version>
+      </dependency>
+      <!-- logging in rabbitmq -->
+      <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-api</artifactId>
+	<version>1.7.25</version>
+      </dependency>
+      <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-simple</artifactId>
+	<version>1.7.25</version>
+	<scope>test</scope>
+      </dependency>
+      <!-- JAVA EE API -->
+      <dependency>
+	<groupId>javax</groupId>
+	<artifactId>javaee-api</artifactId>
+	<version>7.0</version>
+      </dependency>
+      <!-- Glassfish client for the lookup operation -->
+      <dependency>
+	<groupId>org.glassfish.main.appclient</groupId>
+	<artifactId>gf-client</artifactId>
+	<version>${glassfish.version}</version>
+      </dependency>
+      <!-- Glassfish Jersey REST -->
+      <dependency>
+	<groupId>org.glassfish.jersey</groupId>
+	<artifactId>jersey-bom</artifactId>
+	<version>${jersey.version}</version>
+	<type>pom</type>
+	<scope>import</scope>
+      </dependency>
+      <!-- JSON serialisation with Jersey -->
+      <dependency>
+        <groupId>org.glassfish.jersey.containers</groupId>
+        <artifactId>jersey-container-grizzly2-http</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+      <!-- RabbitMQ AMQP client -->
+      <dependency>
+	<groupId>com.rabbitmq</groupId>
+	<artifactId>amqp-client</artifactId>
+	<version>5.4.1</version>
+      </dependency>
+      <!-- JSON serialisation with Gson -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.8.5</version>
+      </dependency>
+      <!-- openstreetmap map viewer -->
+      <dependency>
+	<groupId>org.openstreetmap.jmapviewer</groupId>
+	<artifactId>jmapviewer</artifactId>
+	<version>2.3</version>
+      </dependency>
+       <dependency>
+	<groupId>org.jxmapviewer</groupId>
+	<artifactId>jxmapviewer2</artifactId>
+	<version>2.2</version>
+      </dependency>
+     <!-- for the class StringUtils -->
+      <dependency>
+	<groupId>org.apache.commons</groupId>
+	<artifactId>commons-lang3</artifactId>
+	<version>3.6</version>
+      </dependency>
+      <!-- library to generate random passwords -->
+      <dependency>
+	<groupId>org.passay</groupId>
+	<artifactId>passay</artifactId>
+	<version>1.3.0</version>
+      </dependency>
+      <!-- embedded glassfish for testing -->
+      <dependency>
+	<groupId>org.glassfish.extras</groupId>
+	<artifactId>glassfish-embedded-all</artifactId>
+	<version>3.1.1</version>
+	<scope>test</scope>
+      </dependency>
+      <!-- RabbitMQ HTTP API (https://github.com/rabbitmq/hop) -->
+      <dependency>
+	<groupId>com.rabbitmq</groupId>
+	<artifactId>http-client</artifactId>
+	<version>2.1.0.RELEASE</version>
+	<scope>test</scope>
+      </dependency>
+      <dependency>
+      	<groupId>org.springframework</groupId>
+      	<artifactId>spring-web</artifactId>
+      	<version>5.0.6.RELEASE</version>
+      	<scope>test</scope>
+      </dependency>
+      <dependency>
+      	<groupId>org.apache.httpcomponents</groupId>
+      	<artifactId>httpclient</artifactId>
+      	<version>4.5.5</version>
+      	<scope>test</scope>
+      </dependency>
+      <!-- testing -->
+      <dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>4.12</version>
+      <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <!-- common build plugins configuration -->
+  <build>
+    <plugins>
+      <!-- enforce Java version 8 (1.8.*) only and Maven version >= 3.5.0 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <id>enforce-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[1.8,9)</version>
+                  <message>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+You need JDK8
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</message>
+                </requireJavaVersion>
+                <requireMavenVersion>
+                  <version>3.0.4</version>
+                  <message>You need Maven 3.0.4 or later</message>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- maven-eclipse configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.10</version>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+        </configuration>
+      </plugin>
+      <!-- java compiler configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <!-- surefire configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <enableAssertions>true</enableAssertions>
+	  <reuseForks>false</reuseForks>
+        </configuration>
+      </plugin>
+      <!-- source packaging configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- javadoc packaging in jar configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <docfilessubdirs>true</docfilessubdirs>
+              <detectOfflineLinks>false</detectOfflineLinks>
+              <detectJavaApiLink>false</detectJavaApiLink>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- checkstyle configuration -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-checkstyle-plugin</artifactId>
+	<version>3.0.0</version>
+	<dependencies>
+          <dependency>
+            <groupId>eu.telecomsudparis.csc</groupId>
+            <artifactId>tsp-csc-config-checkstyle</artifactId>
+            <version>1.1-SNAPSHOT</version>
+          </dependency>
+	</dependencies>
+      </plugin>
+      <!-- site configuration -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.6</version>
+        <configuration>
+          <locales>fr</locales>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <!-- reports in the maven site -->
+  <reporting>
+    <plugins>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-project-info-reports-plugin</artifactId>
+	<version>2.4</version>
+	<configuration>
+          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-javadoc-plugin</artifactId>
+	<version>2.9.1</version>
+      </plugin>
+      <plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>findbugs-maven-plugin</artifactId>
+	<version>3.0.4</version>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-checkstyle-plugin</artifactId>
+	<version>3.0.0</version>
+	<configuration>
+	  <configLocation>config/checkstyle/sun_checks_adapted_to_tsp_csc_pour_eclipse_neon.xml</configLocation>
+	  <encoding>UTF-8</encoding>
+	  <consoleOutput>true</consoleOutput>
+	  <failsOnError>false</failsOnError>
+	  <linkXRef>false</linkXRef>
+	</configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <!-- sub-modules -->
+  <modules>
+    <module>vlibtour-libraries</module>
+    <module>vlibtour-tour-management</module>
+    <module>vlibtour-lobby-room-system</module>
+    <module>vlibtour-client</module>
+    <module>vlibtour-bikestation</module>
+    <module>vlibtour-emulation-visit</module>
+    <module>vlibtour-scenario</module>
+  </modules>
+</project>

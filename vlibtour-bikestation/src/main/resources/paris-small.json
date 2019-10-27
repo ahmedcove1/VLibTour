@@ -1,0 +1,3 @@
+[{"number":31705,"name":"31705 - CHAMPEAUX (BAGNOLET)","address":"RUE DES CHAMPEAUX (PRES DE LA GARE ROUTIERE) - 93170 BAGNOLET","position":{"lat":48.8645278209514,"lng":2.416170724425901},"banking":true,"bonus":true,"status":"OPEN","contract_name":"Paris","bike_stands":50,"available_bike_stands":37,"available_bikes":13,"last_update":1499074387000},
+{"number":10042,"name":"10042 - POISSONNIÃˆRE - ENGHIEN","address":"52 RUE D'ENGHIEN / ANGLE RUE DU FAUBOURG POISSONIERE - 75010 PARIS","position":{"lat":48.87242006305313,"lng":2.348395236282807},"banking":true,"bonus":false,"status":"OPEN","contract_name":"Paris","bike_stands":33,"available_bike_stands":16,"available_bikes":16,"last_update":1499074561000}]
+
